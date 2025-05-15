@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moe Dheis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>MOE DHEIS</h1>
+    <p class="tagline">Experience the difference the <em>best</em> words make</p>
+  </header>
+
+  <!-- Values Section -->
+  <section class="values">
+    <div class="values-wrapper">
+    <div class="values-image">
+      <img src="assets/Andrew.png" alt="Profile Image" />
+    </div>
+      <div class="values-content">
+        <h2 class="section-heading">VALUES</h2>
+        <div class="underline-values"></div>
+
+        <div class="value-card">
+          <h3>Your mission and brand are paramount</h3>
+          <p>You have a unique voice and message to the world. I'm here to help you change the world like only you can.</p>
+        </div>
+
+        <div class="value-card">
+          <h3>Your relationship with your audience is sacred</h3>
+          <p>Everything I do is designed to respect and enhance that relationship. It’s your most valuable asset.</p>
+        </div>
+
+        <div class="value-card">
+          <h3>Measure twice, cut once</h3>
+          <p>Incredible results come from an ironclad process. That’s why I ask the right questions from day one.</p>
+        </div>
+
+        <div class="value-card">
+          <h3>Clear and regular communication</h3>
+          <p>You will never have to wonder about the status of a project or have a question go unanswered. Regular, scheduled communication and 24/7 access.</p>
+        </div>
+
+        <div class="value-card">
+          <h3>I only get paid when you get results</h3>
+          <p>My results are guaranteed. If for some reason you don't see the results you want, you pay nothing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="brands">
+  <h2 class="section-heading">A FEW BRAANDS I'VE HELPED</h2>
+  <div class="underline-brands"></div>
+
+  <div class="brands-grid">
+    <div class="brand-item">
+      <img src="assets/brand1.jpg" alt="Brand 1">
+      <p>Chris Heria</p>
+    </div>
+    <div class="brand-item">
+      <img src="assets/brand2.jpg" alt="Brand 2">
+      <p>Chris Heria</p>
+    </div>
+    <div class="brand-item">
+      <img src="assets/brand3.jpg" alt="Brand 3">
+      <p>Chris Heria</p>
+    </div>
+  </div>
+</section>
+<section class="contact">
+  <h2 class="section-heading">CONTACT</h2>
+  <div class="underline-contact"></div>
+<div class="contact-subtext">
+  <p style="font-size: 24px;">Want to see what this could look like for your business?</p>
+  <p>Fill out the form below — I’ll take a look, run a quick audit, and get back to you within 48 hours.</p>
+  <p>No cost. No pressure. No pitch deck nonsense.</p>
+</div> 
+
+  
+  <form class="contact-form" aaction="https://contact-backend-beta.vercel.app/api/send" method="POST">
+  <input type="text" name="name" placeholder="Your First Name Here..." required />
+<input type="email" name="email" placeholder="Your Email Address Here..." required />
+<textarea name="message" placeholder="Your Most Important Question..." required></textarea>
+<select name="budget" required>
+  <option value="under-500">Less than $500</option>
+  <option value="500-2000">$500 – $2,000</option>
+  <option value="2000-plus">More than $2,000</option>
+</select>
+<input type="text" name="website" placeholder="Your Website Here..." />
+
+
+  <button type="submit">SUBMIT</button>
+<div id="form-error" style="color: red; margin-top: 10px;"></div>
+
+  </form>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    // Create an error display area below the form if it doesn’t exist
+    let errorDiv = document.getElementById("form-error");
+    if (!errorDiv) {
+      errorDiv = document.createElement("div");
+      errorDiv.id = "form-error";
+      errorDiv.style.color = "red";
+      errorDiv.style.marginTop = "10px";
+      form.appendChild(errorDiv);
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      errorDiv.textContent = ""; // clear previous error
+
+      const formData = {
+        name: form.elements["name"].value,
+        email: form.elements["email"].value,
+        message: form.elements["message"].value,
+        budget: form.elements["budget"].value,
+        website: form.elements["website"].value,
+      };
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          // ✅ Replace form with thank you message
+          form.innerHTML = `
+            <div style="text-align:center; padding:20px;">
+              <h2>Thank you!</h2>
+              <p>Your message was sent successfully. I’ll get back to you within 48 hours.</p>
+            </div>
+          `;
+        } else {
+          errorDiv.textContent = "Oops! Something went wrong. Try again later.";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        errorDiv.textContent = "Oops! Something went wrong. Try again later.";
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
