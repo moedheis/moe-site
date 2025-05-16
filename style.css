@@ -25,14 +25,15 @@ h1, h2, h3 {
   margin-bottom: 10px;
 }
 
+
 .underline-values {
-  width: 300px;
+  width: 65%;
   height: 2px;
   background-color: #DC9342;
   margin: 10px auto 20px;
 }
 .underline-brands {
-  width: 300px;
+  width: 50%;
   height: 2px;
   background-color: #DC9342;
   margin: 10px auto 20px;
@@ -40,7 +41,7 @@ h1, h2, h3 {
 }
 
 .underline-contact {
-  width: 300px;
+  width: 50%;
   height: 2px;
   background-color: #DC9342;
   margin: 10px auto 20px;
