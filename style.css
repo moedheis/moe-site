@@ -1,4 +1,4 @@
-/* === GLOBAL STYLES === */
+/* === GLOBAL STYLES === */ 
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,6 @@ body {
 }
 
 h1, h2, h3 {
-  
   font-weight: bold;
 }
 
@@ -46,21 +45,21 @@ h1, h2, h3 {
   margin: 10px auto 20px;
   margin-bottom: 80px;
 }
+
 /* === HERO SECTION === */
 .hero {
   background-color: #1B1C14;
   color: #DC9342;
-   padding: 116px 20px;
+  padding: 116px 20px;
   text-align: center;
 }
 
 .hero h1 {
   font-size: 56px;
   letter-spacing: 1px;
-  color: #cc7a00; /* or whatever your golden-orange is */
+  color: #cc7a00;
   margin-bottom: 20px;
 }
-
 
 .hero .tagline {
   color: #ffffff;
@@ -76,27 +75,30 @@ h1, h2, h3 {
 .values-wrapper {
   display: flex;
   gap: 40px;
-  align-items: stretch; /* Make both sides the same height */
+  align-items: stretch;
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px;
 }
 
-.values-image {
-  flex: 1;
+.values-image,
+.values-content {
+  flex: 1 1 50%;
+  min-width: 0;
 }
-
 
 .values-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Fill container without stretching */
+  height: auto;
+  object-fit: cover;
   border-radius: 12px;
+  display: block;
 }
 
 .values-content {
   flex: 1;
 }
+
 .value-card {
   margin-bottom: 40px;
 }
@@ -113,6 +115,7 @@ h1, h2, h3 {
   line-height: 1.7;
   color: #2D2D2D;
 }
+
 /* === BRANDS SECTION === */
 .case-studies {
   padding: 60px 20px;
@@ -120,11 +123,10 @@ h1, h2, h3 {
 }
 
 .underline-case-studies {
- width: 50%;
+  width: 50%;
   height: 2px;
   background-color: #DC9342;
-  margin: 10px auto 20px;
-  margin-bottom: 124px;
+  margin: 10px auto 124px;
 }
 
 .case-study-grid {
@@ -180,11 +182,10 @@ h1, h2, h3 {
   background-color: #000;
   color: white;
   border: none;
-  padding: 15px;
+  padding: 24px 40px;
   font-size: 24px;
   font-weight: bold;
   width: 100%;
-   padding: 24px 40px;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
   border-radius: 6px;
@@ -197,9 +198,28 @@ h1, h2, h3 {
   color: #fff;
 }
 
+.contact-subtext {
+  font-size: 18px;
+  color: #1e1e1e;
+  width: 100%;
+  max-width: 640px;
+  margin: 40px auto 60px;
+  text-align: center;
+  line-height: 1.6;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 20px;
+}
 
+.contact-subtext p {
+  margin-bottom: 8px;
+}
+
+.contact-subtext p.spaced {
+  margin-bottom: 24px;
+}
+
+/* === MOBILE FIXES === */
 @media (max-width: 768px) {
-  /* Stack values section vertically */
   .values-wrapper {
     flex-direction: column;
     align-items: center;
@@ -208,16 +228,19 @@ h1, h2, h3 {
 
   .values-image,
   .values-content {
+    flex: 1 1 100%;
     width: 100%;
+    min-width: 0;
   }
 
   .values-image img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    margin-bottom: 30px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
   }
 
-  /* Adjust section headings and underline */
   .section-heading {
     font-size: 28px;
     text-align: center;
@@ -227,13 +250,11 @@ h1, h2, h3 {
     margin: 10px auto 30px;
   }
 
-  /* Center value cards */
   .value-card h3,
   .value-card p {
     text-align: center;
   }
 
-  /* Brand section */
   .brand-card {
     text-align: center;
     margin-bottom: 40px;
@@ -245,7 +266,6 @@ h1, h2, h3 {
     height: auto;
   }
 
-  /* Contact form */
   .contact-form input,
   .contact-form textarea,
   .contact-form select {
@@ -259,23 +279,4 @@ h1, h2, h3 {
   .section-heading.contact-heading {
     font-size: 28px;
   }
-}
-.contact-subtext {
-  font-size: 18px;
-   
-  color: #1e1e1e;
-  width: 100%;
-  max-width:  640px;
-  margin: 40px auto 60px;
-  text-align: center;
-  line-height: 1.6;
-  font-family: 'Montserrat', sans-serif;
-   padding: 0 20px
-}
-.contact-subtext p {
-  margin-bottom: 8px; /* normal space between lines */
-}
-
-.contact-subtext p.spaced {
-  margin-bottom: 24px; /* larger gap after key paragraphs */
 }
