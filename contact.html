@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact - Moe Dheis</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- Font Awesome (still used for DM icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="is-loading">
+
+  <!-- Contact Card -->
+  <div class="container contact-single site-main">
+    <div class="col content-left">
+      <h1 class="hero-title">CONTACT</h1>
+
+      <div class="lead contact-text">
+        <p style="font-size: 18px; font-weight: 500; margin-bottom: 24px;">
+          I work privately with a small number of clients each year.
+        </p>
+
+        <p><strong>At this point, you’ve got three choices:</strong></p>
+        <ol style="text-align:left; max-width:480px; margin:0 auto; padding-left:20px; line-height:1.8; color:#444;">
+          <li>Keep running ads yourself and stay stuck at the same level.</li>
+          <li>Do nothing and let your competitors win while you watch.</li>
+          <li>
+            <strong>
+              STEP UP NOW — 
+              <span style="color:#d97706;">while I still have space</span> — 
+              and take the spot they wish they had.
+            </strong>
+          </li>
+        </ol>
+
+        <hr style="margin:30px auto; border:none; border-top:1px solid #eee; max-width:500px;">
+
+        <p class="contact-email">
+          <a href="mailto:moe@dheiss.com">EMAIL: moe@dheiss.com</a>
+        </p>
+
+        <p class="contact-dm">
+          <i class="fas fa-comment"></i> 
+          DM: <a href="https://www.instagram.com/moeketing/" target="_blank">@moeketing</a>
+        </p>
+      </div>
+
+      <br><br>
+      <div class="btn-row">
+        <a class="btn" href="index.html">← Back</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transition Script -->
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.remove("is-loading");
+    });
+
+    document.querySelectorAll("a").forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener("click", function (e) {
+          if (
+            link.href &&
+            !link.href.includes("#") &&
+            !link.target &&
+            link.href !== window.location.href
+          ) {
+            e.preventDefault();
+            document.body.classList.add("is-exiting");
+            setTimeout(() => {
+              window.location.href = link.href;
+            }, 500);
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Values - Moe Dheis</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+</head>
+<body class="is-loading"> <!-- ✅ Added is-loading -->
+
+  <!-- Main Card Container (smaller) -->
+  <div class="container small-container">
+    <div class="main site-main"> <!-- ✅ Added site-main -->
+      
+      <!-- Left column (Image) -->
+      <div class="col side-image" style="background:url('img/values.png') center center/cover no-repeat; background-color:#000;"></div>
+      
+      <!-- Right column (Content) -->
+      <div class="col content-left">
+        <h1 class="hero-title">VALUES</h1>
+        
+        <div class="lead values-text">
+          <p><strong>Your mission and brand are paramount:</strong><br>
+          You have a unique voice and message to the world. I'm here to help you change the world like only you can.</p>
+
+          <p><strong>Your relationship with your audience is sacred:</strong><br>
+          Everything I do is designed to respect and enhance that relationship. It’s your most valuable asset.</p>
+
+          <p><strong>Measure twice, cut once:</strong><br>
+          Incredible results come from an ironclad process. That’s why I ask the right questions from day one.</p>
+
+          <p><strong>Clear and regular communication:</strong><br>
+          You will never have to wonder about the status of a project or have a question go unanswered. 
+          Regular, scheduled communication and 24/7 access.</p>
+
+          <p><strong>I only get paid when you get results:</strong><br>
+          My results are guaranteed. If for some reason you don't see the results you want, you pay nothing.</p>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn back-btn" href="index.html">← Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Transition Script -->
+  <script>
+    // Remove is-loading on load
+    window.addEventListener("load", () => {
+      document.body.classList.remove("is-loading");
+    });
+
+    // Smooth page transitions
+    document.querySelectorAll("a").forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener("click", function (e) {
+          if (
+            link.href &&
+            !link.href.includes("#") &&
+            !link.target &&
+            link.href !== window.location.href
+          ) {
+            e.preventDefault();
+            document.body.classList.add("is-exiting");
+            setTimeout(() => {
+              window.location.href = link.href;
+            }, 500); // match CSS fade-out duration
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

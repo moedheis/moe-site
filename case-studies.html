@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Case Studies - Moe Dheis</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+</head>
+<body class="is-loading"> <!-- ✅ Added is-loading -->
+
+  <!-- Main Card Container -->
+  <div class="container small-container">
+    <div class="main site-main"> <!-- ✅ Added site-main -->
+
+      <!-- Left column (Content) -->
+      <div class="col content-left">
+        <h1 class="hero-title">KILLER CASE STUDY</h1>
+        
+        <div class="lead values-text">
+          <p>
+            <strong>Psychiatrist Clinic</strong><br>
+            He was running ads himself, pulling in maybe 2 clients a week. 
+            When I stepped in, I made one small shift — and his calendar went 
+            from <strong>half-empty</strong> to 
+            <strong><span style="color:#d97706;">impossible to manage!</span></strong>
+          </p>
+
+          <h3 style="margin-top: 20px; margin-bottom: 10px; font-size:16px; font-weight:600;">The result?</h3>
+          <ul style="text-align:left; max-width:420px; margin: 0 auto 20px auto; line-height:1.7; color:#444;">
+            <li><strong><span style="color:#d97706;">2,999+</span> new conversations</strong></li>
+            <li><strong><span style="color:#d97706;">$0.28</span> per lead</strong> (3–5× cheaper than average)</li>
+            <li><strong><span style="color:#d97706;">$848</span> total spend</strong> turned his calendar from <em>1 patient/day → 10-hour days fully booked</em></li>
+            <li><em>He eventually asked me to <strong>"<span style="color:#d97706;">pause</span> the ads so he could spend time with his wife and kids again"</strong></em></li>
+          </ul>
+
+          <p>
+            <br>
+            <strong>Bottom Line:</strong><br>
+            Results like this aren’t for everyone. 
+            <strong style="color:#d97706;">I only work with a handful of clients at a time</strong> — 
+            so I can give each project the same attention I’d give 
+            <u>my own business.</u>
+          </p>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn" href="index.html">← Back</a>
+        </div>
+      </div>
+
+      <!-- Right column (Image) -->
+      <div class="col side-image" style="background:url('img/case-studies.png') center center/cover no-repeat; background-color:#000;"></div>
+    </div>
+  </div>
+
+  <!-- ✅ Transition Script -->
+  <script>
+    // Remove is-loading on load
+    window.addEventListener("load", () => {
+      document.body.classList.remove("is-loading");
+    });
+
+    // Smooth page transitions
+    document.querySelectorAll("a").forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener("click", function (e) {
+          if (
+            link.href &&
+            !link.href.includes("#") &&
+            !link.target &&
+            link.href !== window.location.href
+          ) {
+            e.preventDefault();
+            document.body.classList.add("is-exiting");
+            setTimeout(() => {
+              window.location.href = link.href;
+            }, 500); // match CSS fade-out duration
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
