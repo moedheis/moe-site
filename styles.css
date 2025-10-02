@@ -170,7 +170,7 @@ body.is-loading .site-main {
   color: #000;
 }
 
-/* ---- Contact Page ------------------------------------------------------- */
+/* ---- Contact Page (Improved Mobile Readability) ------------------------- */
 .contact-single {
   max-width: 700px;
   margin: 80px auto;
@@ -181,56 +181,46 @@ body.is-loading .site-main {
   text-align: center;
 }
 .contact-text {
-  max-width: 500px;
+  max-width: 90%;
   margin: 0 auto 30px auto;
-  color: #444;
-  line-height: 1.7;
-  font-size: 16px;
+  color: #333;
+  line-height: 1.9;
+  font-size: 17px;
+  text-align: center;
 }
-
-/* Email Button */
+.contact-text ol {
+  padding-left: 20px;
+  text-align: left;
+  line-height: 1.9;
+  font-size: 16px;
+  margin: 20px auto;
+}
+.contact-text ol li {
+  margin-bottom: 14px;
+}
 .contact-email {
-  margin: 30px 0;
+  margin: 35px 0;
 }
 .contact-email a {
   display: block;
   width: 100%;
-  max-width: 280px;
+  max-width: 300px;
   margin: 0 auto;
   background: var(--hover-color);
   color: #fff;
-  padding: 16px 0;
+  padding: 18px 0;
   border-radius: 8px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   transition: background 0.2s ease;
   text-align: center;
   word-break: break-word;
 }
-.contact-email a:hover {
-  background: #b45309;
-}
-
-/* DM text */
-.contact-dm {
-  margin-top: 20px;
-  font-size: 15px;
-}
-.contact-dm a {
-  color: var(--hover-color);
-  font-weight: 600;
-  text-decoration: none;
-}
-.contact-dm a:hover {
-  text-decoration: underline;
-}
-
-.contact-note {
-  font-size: 13px;
-  color: #666;
-  margin-top: 20px;
-}
+.contact-email a:hover { background: #b45309; }
+.contact-dm { margin-top: 20px; font-size: 14px; }
+.contact-dm a { color: var(--hover-color); font-weight: 600; text-decoration: none; }
+.contact-dm a:hover { text-decoration: underline; }
 
 /* ---- Responsive --------------------------------------------------------- */
 @media (max-width: 900px) {
@@ -254,14 +244,21 @@ body.is-loading .site-main {
   .btn, .back-btn { min-width: 100%; }
 
   .contact-single {
-    margin: 20px 16px !important;
-    padding: 30px 20px;
+    margin: 20px 12px !important;
+    padding: 26px 18px;
     border-radius: 12px;
     box-shadow: 0 3px 14px rgba(0,0,0,0.08);
   }
+  .contact-text {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.85;
+    text-align: left;
+  }
+  .contact-text ol { padding-left: 22px; }
   .contact-email a {
-    font-size: 14px;
-    padding: 14px 0;
+    font-size: 15px;
+    padding: 15px 0;
     border-radius: 6px;
   }
 }
