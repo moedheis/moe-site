@@ -8,10 +8,7 @@
   --hover-color: #d97706; /* orange hover color */
 }
 
-* { 
-  box-sizing: border-box; 
-  -webkit-text-size-adjust: 100%; /* ✅ prevent Chrome auto zoom */
-}
+* { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--bg);
@@ -189,7 +186,6 @@ body.is-loading .site-main {
   text-align: center;
   color: #444;
   line-height: 1.7;
-  font-size: 16px; /* ✅ slightly bigger for readability */
 }
 .contact-email { margin: 25px 0; }
 .contact-email a {
@@ -201,8 +197,23 @@ body.is-loading .site-main {
   font-weight: 700;
   text-decoration: none;
   transition: background 0.2s ease;
-  word-break: break-word; /* ✅ fix overflow on Chrome mobile */
+  text-align: center;
+  white-space: nowrap; /* prevent ugly wrapping on desktop */
 }
+
+/* Mobile Button Fix */
+@media (max-width: 600px) {
+  .contact-email a {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    white-space: normal;   /* allow cleaner wrapping if needed */
+    font-size: 15px;
+    line-height: 1.4;
+  }
+}
+
 .contact-email a:hover { background: #b45309; }
 .contact-note { font-size: 13px; color: #666; margin-top: 20px; }
 .contact-dm { margin-top: 20px; font-size: 14px; }
@@ -235,10 +246,5 @@ body.is-loading .site-main {
     padding: 30px 20px;
     box-shadow: 0 3px 14px rgba(0,0,0,0.08);
     border-radius: 8px;
-  }
-  .contact-email a {
-    display: block; /* ✅ makes email button full-width on small screens */
-    width: 100%;
-    text-align: center;
   }
 }
