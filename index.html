@@ -3,26 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- ✅ SEO Title + Description -->
-  <title>Moe Dheis - Strategic Marketer</title>
+  <title>Moe Dheis | Strategic Marketer</title>
   <meta name="description" content="I help businesses go from chasing clients to choosing them — with strategies competitors can’t copy or even see.">
   <meta name="robots" content="index, follow">
 
-  <!-- ✅ Open Graph (for social sharing) -->
-  <meta property="og:title" content="Moe Dheis — Strategic Marketer for Businesses That Win">
+  <!-- ✅ Open Graph (Social Sharing) -->
+  <meta property="og:title" content="Moe Dheis — Strategic Marketer">
   <meta property="og:description" content="Helping businesses go from chasing clients to choosing them with results-based strategy.">
   <meta property="og:image" content="https://dheiss.com/img/MoeDheis.png">
   <meta property="og:url" content="https://dheiss.com">
   <meta property="og:type" content="website">
 
   <!-- ✅ Favicon -->
-  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="icon" href="img/favicon.png" alt="Moe Dheis Monogram">
 
-  <!-- ✅ Font Awesome -->
+  <!-- ✅ Styles + Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- ✅ Styles -->
   <link rel="stylesheet" href="styles.css">
 
   <!-- ✅ JSON-LD Schema -->
@@ -47,41 +43,16 @@
   }
   </script>
 
-  <!-- ✅ Inline Highlight Styling -->
   <style>
-    .intro-line {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .highlight {
-      color: #d97706;
-      font-weight: bold;
-    }
-    .highlight-italic {
-      color: #d97706;
-      font-style: italic;
-      font-weight: bold;
-    }
-    /* 👇 SEO visible image (kept hidden visually but readable by crawlers) */
-    .seo-image {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      position: absolute;
-      pointer-events: none;
-    }
+    .intro-line { font-size: 18px; font-weight: bold; }
+    .highlight { color: #d97706; font-weight: bold; }
+    .highlight-italic { color: #d97706; font-style: italic; font-weight: bold; }
   </style>
 </head>
 
 <body class="is-loading">
-
-  <!-- 👇 SEO-visible image for indexing (Google + accessibility) -->
-  <img class="seo-image" src="img/MoeDheis.png" alt="Moe Dheis marketing strategist portrait">
-
-  <!-- Main Card Container -->
   <div class="container">
     <div class="main site-main">
-      <!-- Left side -->
       <div class="col content-left">
         <h1 class="hero-title">MOE DHEIS</h1>
         <div class="subtitle">MARKETING STRATEGIST</div>
@@ -102,54 +73,33 @@
         </div>
       </div>
 
-      <!-- Right side -->
-      <div class="col side-image"></div>
+      <div class="col side-image">
+        <img src="img/MoeDheis.png" alt="Moe Dheis marketing strategist portrait" style="display:none;">
+      </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-left">
         <div class="social-icons">
-          <a href="https://x.com/Moeketing" target="_blank" rel="noopener noreferrer" title="Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/moe-dheis/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://www.instagram.com/moeketing/" target="_blank" rel="noopener noreferrer" title="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://wa.me/962796159030" target="_blank" rel="noopener noreferrer" title="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
+          <a href="https://x.com/Moeketing" target="_blank" rel="noopener noreferrer" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/moe-dheis/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/moeketing/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/962796159030" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-      <div class="footer-right">
-        <p>© Moe Dheis. All rights reserved.</p>
-      </div>
+      <div class="footer-right"><p>© Moe Dheis. All rights reserved.</p></div>
     </footer>
   </div>
 
-  <!-- Page Transition Script -->
   <script>
-    window.addEventListener("load", () => {
-      document.body.classList.remove("is-loading");
-    });
-
+    window.addEventListener("load", () => document.body.classList.remove("is-loading"));
     document.querySelectorAll("a").forEach(link => {
       if (link.hostname === window.location.hostname) {
-        link.addEventListener("click", function (e) {
-          if (
-            link.href &&
-            !link.href.includes("#") &&
-            !link.target &&
-            link.href !== window.location.href
-          ) {
+        link.addEventListener("click", e => {
+          if (link.href && !link.href.includes("#") && !link.target && link.href !== window.location.href) {
             e.preventDefault();
             document.body.classList.add("is-exiting");
-            setTimeout(() => {
-              window.location.href = link.href;
-            }, 500);
+            setTimeout(() => window.location.href = link.href, 500);
           }
         });
       }
@@ -157,4 +107,3 @@
   </script>
 </body>
 </html>
-
