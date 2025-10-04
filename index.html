@@ -3,41 +3,77 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- ✅ SEO Title + Description -->
   <title>Moe Dheis</title>
   <meta name="description" content="I help businesses go from chasing clients to choosing them — with strategies competitors can’t copy or even see.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="img/favicon.png">
+  <meta name="robots" content="index, follow">
 
-  <!-- Font Awesome for social icons -->
+  <!-- ✅ Open Graph (for social sharing) -->
+  <meta property="og:title" content="Moe Dheis — Strategic Marketer for Businesses That Win">
+  <meta property="og:description" content="Helping businesses go from chasing clients to choosing them with results-based strategy.">
+  <meta property="og:image" content="https://dheiss.com/img/MoeDheis.png">
+  <meta property="og:url" content="https://dheiss.com">
+  <meta property="og:type" content="website">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png" alt="Moe Dheis Monogram">
+
+  <!-- ✅ Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- ✅ Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ✅ JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Moe Dheis",
+    "jobTitle": "Marketing Strategist",
+    "url": "https://dheiss.com",
+    "sameAs": [
+      "https://www.instagram.com/moeketing",
+      "https://www.linkedin.com/in/moedheis",
+      "https://x.com/Moeketing"
+    ],
+    "description": "Strategic marketer helping businesses go from chasing clients to choosing them with exclusive, results-based strategies.",
+    "knowsAbout": ["strategic marketing", "lead generation", "brand positioning", "performance marketing"],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Moe Dheis Marketing"
+    }
+  }
+  </script>
+
+  <!-- ✅ Inline Highlight Styling -->
   <style>
-    /* Extra inline styles to ensure highlight works */
     .intro-line {
       font-size: 18px;
       font-weight: bold;
     }
     .highlight {
-      color: #d97706;  /* orange */
+      color: #d97706;
       font-weight: bold;
     }
     .highlight-italic {
-      color: #d97706;  /* orange */
+      color: #d97706;
       font-style: italic;
       font-weight: bold;
     }
   </style>
 </head>
-<body class="is-loading"> <!-- ✅ Add is-loading for initial animation -->
 
+<body class="is-loading">
   <!-- Main Card Container -->
   <div class="container">
-    <div class="main site-main"> <!-- ✅ Add site-main class for transition -->
+    <div class="main site-main">
       <!-- Left side -->
       <div class="col content-left">
         <h1 class="hero-title">MOE DHEIS</h1>
         <div class="subtitle">MARKETING STRATEGIST</div>
 
-        <!-- Updated Copy -->
         <p class="lead">
           <span class="intro-line">
             <strong>Experience the difference the <span class="highlight-italic">best</span> words make</strong>
@@ -80,16 +116,14 @@
         <p>© Moe Dheis. All rights reserved.</p>
       </div>
     </footer>
-  </div> <!-- end container -->
+  </div>
 
-  <!-- ✅ Transition Script -->
+  <!-- Page Transition Script -->
   <script>
-    // Remove is-loading on load
     window.addEventListener("load", () => {
       document.body.classList.remove("is-loading");
     });
 
-    // Smooth page transitions
     document.querySelectorAll("a").forEach(link => {
       if (link.hostname === window.location.hostname) {
         link.addEventListener("click", function (e) {
@@ -103,7 +137,7 @@
             document.body.classList.add("is-exiting");
             setTimeout(() => {
               window.location.href = link.href;
-            }, 500); // match CSS fade-out time
+            }, 500);
           }
         });
       }
@@ -111,4 +145,3 @@
   </script>
 </body>
 </html>
-
