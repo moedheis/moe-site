@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!-- ✅ SEO Title + Description -->
-  <title>Moe Dheis</title>
+  <title>Moe Dheis | Strategic Marketer for Businesses That Win</title>
   <meta name="description" content="I help businesses go from chasing clients to choosing them — with strategies competitors can’t copy or even see.">
   <meta name="robots" content="index, follow">
 
@@ -17,7 +17,7 @@
   <meta property="og:type" content="website">
 
   <!-- ✅ Favicon -->
-  <link rel="icon" type="image/png" href="img/favicon.png" alt="Moe Dheis Monogram">
+  <link rel="icon" type="image/png" href="img/favicon.png">
 
   <!-- ✅ Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -62,10 +62,22 @@
       font-style: italic;
       font-weight: bold;
     }
+    /* 👇 SEO visible image (kept hidden visually but readable by crawlers) */
+    .seo-image {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
   </style>
 </head>
 
 <body class="is-loading">
+
+  <!-- 👇 SEO-visible image for indexing (Google + accessibility) -->
+  <img class="seo-image" src="img/MoeDheis.png" alt="Moe Dheis marketing strategist portrait">
+
   <!-- Main Card Container -->
   <div class="container">
     <div class="main site-main">
