@@ -3,28 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Values - Moe Dheis</title>
+  <title>My Values | Moe Dheis</title>
   <meta name="description" content="My process is built on precision, honesty, and results. I work with a handful of clients at a time — and deliver impact that lasts.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Moe Dheis — Strategic Marketer">
+  <meta property="og:description" content="Helping businesses go from chasing clients to choosing them with results-based strategy.">
+  <meta property="og:image" content="https://dheiss.com/img/values.png">
+  <meta property="og:url" content="https://dheiss.com/values.html">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="img/favicon.png" alt="Moe Dheis Monogram">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 
-<body class="is-loading"> <!-- ✅ Added is-loading -->
-
-  <!-- 👇 Hidden SEO image (for indexing & Google Images) -->
-  <img src="img/values.png" alt="Strategic marketing values section" style="width:0;height:0;opacity:0;position:absolute;pointer-events:none;">
-
-  <!-- Main Card Container (smaller) -->
+<body class="is-loading">
   <div class="container small-container">
-    <div class="main site-main"> <!-- ✅ Added site-main -->
-      
-      <!-- Left column (Image) -->
-      <div class="col side-image" style="background:url('img/values.png') center center/cover no-repeat; background-color:#000;"></div>
-      
-      <!-- Right column (Content) -->
+    <div class="main site-main">
+      <div class="col side-image" style="background:url('img/values.png') center center/cover no-repeat; background-color:#000;">
+        <img src="img/values.png" alt="Strategic marketing values section" style="display:none;">
+      </div>
+
       <div class="col content-left">
         <h1 class="hero-title">VALUES</h1>
-        
         <div class="lead values-text">
           <p><strong>Your mission and brand are paramount:</strong><br>
           You have a unique voice and message to the world. I'm here to help you change the world like only you can.</p>
@@ -36,47 +37,30 @@
           Incredible results come from an ironclad process. That’s why I ask the right questions from day one.</p>
 
           <p><strong>Clear and regular communication:</strong><br>
-          You will never have to wonder about the status of a project or have a question go unanswered. 
-          Regular, scheduled communication and 24/7 access.</p>
+          You will never have to wonder about the status of a project or have a question go unanswered.</p>
 
           <p><strong>I only get paid when you get results:</strong><br>
           My results are guaranteed. If for some reason you don't see the results you want, you pay nothing.</p>
         </div>
 
-        <div class="btn-row">
-          <a class="btn back-btn" href="index.html">← Back</a>
-        </div>
+        <div class="btn-row"><a class="btn back-btn" href="index.html">← Back</a></div>
       </div>
     </div>
   </div>
 
-  <!-- ✅ Transition Script -->
   <script>
-    // Remove is-loading on load
-    window.addEventListener("load", () => {
-      document.body.classList.remove("is-loading");
-    });
-
-    // Smooth page transitions
+    window.addEventListener("load", () => document.body.classList.remove("is-loading"));
     document.querySelectorAll("a").forEach(link => {
       if (link.hostname === window.location.hostname) {
-        link.addEventListener("click", function (e) {
-          if (
-            link.href &&
-            !link.href.includes("#") &&
-            !link.target &&
-            link.href !== window.location.href
-          ) {
+        link.addEventListener("click", e => {
+          if (link.href && !link.href.includes("#") && !link.target && link.href !== window.location.href) {
             e.preventDefault();
             document.body.classList.add("is-exiting");
-            setTimeout(() => {
-              window.location.href = link.href;
-            }, 500); // match CSS fade-out duration
+            setTimeout(() => window.location.href = link.href, 500);
           }
         });
       }
     });
   </script>
-
 </body>
 </html>
