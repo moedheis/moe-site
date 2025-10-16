@@ -10,6 +10,7 @@
 
 * { box-sizing: border-box; }
 html, body {
+  font-display: swap;
   margin: 0;
   padding: 0;
   background: var(--bg);
@@ -253,3 +254,4 @@ body.is-loading .site-main {
     border-radius: 6px;
   }
 }
+
