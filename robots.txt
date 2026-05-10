@@ -1,4 +1,38 @@
+# ── STANDARD CRAWLERS ──────────────────────────────────────────
 User-agent: *
 Allow: /
-
+ 
+# ── AI & GENERATIVE ENGINE CRAWLERS (GEO) ──────────────────────
+# Explicitly welcoming AI search crawlers to improve visibility
+# in AI-generated answers, summaries, and recommendations.
+ 
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+ 
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+ 
+# Google Gemini / AI Overviews
+User-agent: Google-Extended
+Allow: /
+ 
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+ 
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+ 
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+ 
+# Common AI research / scraping agents
+User-agent: CCBot
+Allow: /
+ 
+# ── SITEMAP ─────────────────────────────────────────────────────
 Sitemap: https://dheiss.com/sitemap.xml
