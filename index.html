@@ -1007,4 +1007,13 @@ calc();
 /* ── SCROLL REVEAL ───────────────────────── */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
-},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+},{threshold:.02,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* Fallback: force all .rv elements visible after 2s if observer fails */
+setTimeout(() => {
+  document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+}, 2000);
+</script>
+</body>
+</html>
