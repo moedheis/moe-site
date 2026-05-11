@@ -280,7 +280,7 @@ html{scroll-behavior:smooth}
 .hl2{margin-left:0}
 .hl3{margin-left:clamp(0px,4vw,48px)}
 
-.hero-sub{font-size:19px;line-height:1.78;color:var(--k2);margin-bottom:36px;max-width:520px}
+.hero-sub{font-size:19px;line-height:1.92;color:var(--k2);margin-bottom:36px;max-width:520px}
 .hero-sub strong{color:var(--am);font-weight:700}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
 .stats-row{
@@ -479,13 +479,15 @@ html{scroll-behavior:smooth}
     rgba(200,134,10,0.18) 85%,
     transparent 100%
   );
+  box-shadow:0 0 0 0 rgba(200,134,10,0);
   transform:translateY(-50%) scaleX(0);
   transform-origin:left center;
-  transition:transform 1.2s cubic-bezier(.22,1,.36,1) .6s;
+  transition:transform 1.2s cubic-bezier(.22,1,.36,1) .6s, box-shadow 1s ease .6s;
   z-index:0;pointer-events:none;
 }
 .proc-connector.line-in::before{
   transform:translateY(-50%) scaleX(1);
+  box-shadow:0 0 8px 2px rgba(200,134,10,0.28), 0 0 20px 4px rgba(200,134,10,0.12);
 }
 
 /* Dot nodes on the line — one above each card boundary */
@@ -882,7 +884,7 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
         <div class="img-frame">
           <div class="img-inner">
             <img src="moe-dheis.jpg" alt="Moe Dheis" style="width:100%;height:100%;object-fit:cover;">
-            <div class="img-est">Est. 2024</div>
+            <div class="img-est">Est. 2019</div>
             <div class="img-cap-bar">
               <div class="img-cap-n">MOE DHEIS // Lead Gen Specialist</div>
               <div class="img-cap-r">Exclusive Contractor Leads · Google Ads</div>
@@ -912,20 +914,20 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
       <div class="card">
         <!-- Main tabs -->
         <div class="tabs-r">
-          <button class="tb on" id="tab-p" onclick="setTab('p')">Product</button>
-          <button class="tb"    id="tab-s" onclick="setTab('s')">Service</button>
+          <button class="tb"    id="tab-p" onclick="setTab('p')">Product</button>
+          <button class="tb on" id="tab-s" onclick="setTab('s')">Service</button>
         </div>
 
         <!-- Service sub-tabs -->
-        <div id="st-row" style="display:none">
+        <div id="st-row" style="display:block">
           <div class="subtabs-r">
-            <button class="stb on" id="stb-m" onclick="setSubTab('m')">Meta Ads</button>
-            <button class="stb"    id="stb-g" onclick="setSubTab('g')">Google Ads</button>
+            <button class="stb"    id="stb-m" onclick="setSubTab('m')">Meta Ads</button>
+            <button class="stb on" id="stb-g" onclick="setSubTab('g')">Google Ads</button>
           </div>
         </div>
 
         <!-- Product fields -->
-        <div id="f-p">
+        <div id="f-p" style="display:none">
           <div class="fg"><label class="fl">Impressions</label><input class="fi" type="number" id="p-impressions" value="0" oninput="calc()"><div class="fh">Monthly ad impressions</div></div>
           <div class="fg"><label class="fl">CPM ($)</label><input class="fi" type="number" id="p-cpm" value="0" oninput="calc()"><div class="fh">Cost per 1,000 impressions</div></div>
           <div class="fg"><label class="fl">CTR (%)</label><input class="fi" type="number" id="p-ctr" value="0" oninput="calc()"><div class="fh">Click-through rate</div></div>
@@ -944,7 +946,7 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
         </div>
 
         <!-- Google Ads fields (CPC-based, distinct from Meta) -->
-        <div id="f-g" style="display:none">
+        <div id="f-g">
           <div class="fg"><label class="fl">Monthly Ad Spend ($)</label><input class="fi" type="number" id="g-spend" value="0" oninput="calc()"><div class="fh">Total monthly Google Ads budget</div></div>
           <div class="fg"><label class="fl">Avg. CPC ($)</label><input class="fi" type="number" id="g-cpc" value="0" oninput="calc()"><div class="fh">Average cost per click</div></div>
           <div class="fg"><label class="fl">Conv. Rate (%)</label><input class="fi" type="number" id="g-cvr" value="0" oninput="calc()"><div class="fh">Landing page conversion rate</div></div>
@@ -1407,7 +1409,7 @@ function toggleFaq(i){
 }
 
 /* ── CALCULATOR STATE ────────────────────── */
-let curTab='p', curSub='m', optOn=false;
+let curTab='s', curSub='g', optOn=false;
 
 function setTab(t){
   curTab=t;
