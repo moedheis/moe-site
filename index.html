@@ -140,7 +140,7 @@ html{scroll-behavior:smooth}
 }
 
 /* ── LAYOUT ────────────────────────────────────────────────── */
-.wrap{max-width:1080px;width:100%;margin:0 auto;padding:0 24px}
+.wrap{max-width:1080px;width:100%;margin:0 auto;padding:0 16px}
 .divider{height:1px;background:var(--ln)}
 .sect-tag{
   font-family:'JetBrains Mono',monospace;font-size:11px;
@@ -166,10 +166,11 @@ html{scroll-behavior:smooth}
 
 /* ── BUTTONS ───────────────────────────────────────────────── */
 .btn-amber{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
   background:var(--am);color:#fff;font-family:'Syne',sans-serif;
   font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  padding:13px 28px;border-radius:var(--r2);border:none;cursor:pointer;
+  padding:14px 28px;border-radius:var(--r2);border:none;cursor:pointer;
+  width:100%;
   transition:background .22s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .22s;
   white-space:nowrap;
 }
@@ -179,10 +180,11 @@ html{scroll-behavior:smooth}
   box-shadow:0 6px 28px rgba(200,134,10,.38), 0 2px 8px rgba(200,134,10,.22);
 }
 .btn-ghost{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
   background:transparent;color:var(--k1);font-family:'Syne',sans-serif;
   font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  padding:12px 28px;border-radius:var(--r2);border:1px solid rgba(18,16,12,0.15);
+  padding:13px 28px;border-radius:var(--r2);border:1px solid rgba(18,16,12,0.15);
+  width:100%;
   cursor:pointer;transition:all .22s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;
 }
 .btn-ghost:hover{
@@ -198,17 +200,17 @@ html{scroll-behavior:smooth}
   -webkit-backdrop-filter:blur(28px) saturate(1.5);
   border-bottom:1px solid rgba(18,16,12,.05);
   border-top:1px solid rgba(255,255,255,.72);
-  padding:0 24px;position:sticky;top:0;z-index:300;width:100%;
+  padding:0 16px;position:sticky;top:0;z-index:300;width:100%;
   box-shadow:0 2px 24px rgba(18,16,12,.07), 0 1px 0 rgba(255,255,255,.5) inset;
 }
 .nav-i{
   max-width:1080px;width:100%;margin:0 auto;
-  height:62px;display:flex;align-items:center;
-  justify-content:space-between;gap:16px;
+  height:56px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
 }
 .logotype{
-  font-family:'Syne',sans-serif;font-size:15px;font-weight:800;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--k1);flex-shrink:0;
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--k1);flex-shrink:0;
 }
 .logotype span{color:var(--am)}
 .nav-links{display:flex;gap:28px;align-items:center}
@@ -217,15 +219,68 @@ html{scroll-behavior:smooth}
   color:var(--k3);transition:color .2s;cursor:pointer;
 }
 .nav-links a:hover{color:var(--k1)}
-
-/* ── HERO ──────────────────────────────────────────────────── */
-#hero{
-  padding:72px 24px 64px;
-  border-bottom:1px solid var(--ln);
-  width:100%;position:relative;overflow:hidden;
+.nav-mobile-cta{
+  display:none;
+  padding:9px 16px;font-size:10px;letter-spacing:.13em;
+  white-space:nowrap;width:auto;
+}
+@media(max-width:859px){
+  .nav-mobile-cta{display:inline-flex !important}
+  .nav-cta{display:none !important}
 }
 
-/* Background 'ARCHITECT' watermark */
+/* ── HERO — BLUEPRINT GEOMETRIC AESTHETIC ─────────────────── */
+#hero{
+  padding:48px 16px 48px;
+  border-bottom:1px solid var(--ln);
+  width:100%;position:relative;overflow:hidden;
+  background:var(--cr);
+}
+
+/* ── Blueprint Drafting Grid Overlay ── */
+#hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    /* Major grid lines — every 80px */
+    linear-gradient(rgba(18,16,12,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,16,12,0.04) 1px, transparent 1px),
+    /* Minor grid lines — every 20px */
+    linear-gradient(rgba(18,16,12,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,16,12,0.025) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+  pointer-events:none;z-index:0;
+}
+
+/* ── Blueprint corner accent annotations ── */
+.hero-corner{
+  position:absolute;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(18,16,12,0.22);
+  pointer-events:none;user-select:none;z-index:2;
+  line-height:1.7;
+}
+.hero-corner--tl{ top:18px; left:20px; }
+.hero-corner--tr{ top:18px; right:20px; text-align:right; }
+.hero-corner--bl{ bottom:18px; left:20px; }
+.hero-corner--br{ bottom:18px; right:20px; text-align:right; }
+
+/* Corner L-brackets */
+.hero-corner::before,.hero-corner::after{
+  content:'';
+  position:absolute;
+  border-color:rgba(18,16,12,0.18);
+  border-style:solid;
+  width:10px;height:10px;
+}
+.hero-corner--tl::before{ top:-4px;left:-4px; border-width:1px 0 0 1px; }
+.hero-corner--tr::before{ top:-4px;right:-4px; border-width:1px 1px 0 0; left:auto; }
+.hero-corner--bl::before{ bottom:-4px;left:-4px; border-width:0 0 1px 1px; top:auto; }
+.hero-corner--br::before{ bottom:-4px;right:-4px; border-width:0 1px 1px 0; top:auto;left:auto; }
+.hero-corner--tl::after,.hero-corner--tr::after,.hero-corner--bl::after,.hero-corner--br::after{ display:none }
+
+/* Background 'ARCHITECT' watermark — preserved */
 .hero-watermark{
   position:absolute;
   right:-5%;top:50%;
@@ -239,13 +294,13 @@ html{scroll-behavior:smooth}
   z-index:0;
 }
 
-/* Asymmetric editorial grid */
+/* Asymmetric editorial grid — mobile-first single column */
 .hero-g{
   max-width:1080px;width:100%;margin:0 auto;
   display:grid;
-  grid-template-columns:1fr 320px;
+  grid-template-columns:1fr;
   grid-template-rows:auto;
-  gap:0 64px;
+  gap:36px;
   align-items:start;
   position:relative;z-index:1;
 }
@@ -253,17 +308,28 @@ html{scroll-behavior:smooth}
   padding-top:24px;
 }
 .hero-image-col{
-  padding-top:56px; /* intentional offset for editorial feel */
+  padding-top:56px;
   position:relative;
 }
 
+/* ── Blueprint Badge ── */
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  border:1px solid rgba(18,16,12,0.08);border-radius:var(--r2);
+  border:1px solid rgba(18,16,12,0.10);border-radius:var(--r2);
   padding:6px 14px;margin-bottom:32px;
-  background:rgba(255,255,255,0.7);
+  background:rgba(255,255,255,0.75);
   backdrop-filter:blur(8px);
+  position:relative;
 }
+/* small corner ticks on badge */
+.hero-badge::before,.hero-badge::after{
+  content:'';position:absolute;
+  width:5px;height:5px;
+  border-color:rgba(200,134,10,.4);border-style:solid;
+}
+.hero-badge::before{ top:-1px;left:-1px; border-width:1px 0 0 1px; }
+.hero-badge::after{  bottom:-1px;right:-1px; border-width:0 1px 1px 0; }
+
 .hero-dot{width:7px;height:7px;border-radius:50%;background:var(--gn2);flex-shrink:0}
 
 /* H1 with staircase line structure */
@@ -274,27 +340,37 @@ html{scroll-behavior:smooth}
 }
 .hero-h1 em{font-style:italic;color:var(--am)}
 
-/* Slight indentation stagger per line for editorial feel */
+/* Staircase lines — no indentation on mobile by default */
 .hl0{margin-left:0}
-.hl1{margin-left:clamp(0px,2vw,28px)}
+.hl1{margin-left:0}
 .hl2{margin-left:0}
-.hl3{margin-left:clamp(0px,4vw,48px)}
+.hl3{margin-left:0}
 
-.hero-sub{font-size:19px;line-height:1.92;color:var(--k2);margin-bottom:36px;max-width:520px}
+.hero-sub{font-size:19px;line-height:2.1;color:var(--k2);margin-bottom:36px;max-width:520px}
 .hero-sub strong{color:var(--am);font-weight:700}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.hero-ctas{display:flex;gap:12px;flex-direction:column;margin-bottom:52px}
+/* stats row — allow natural wrapping on small screens */
 .stats-row{
-  display:flex;gap:28px;flex-wrap:wrap;
-  padding-top:24px;border-top:1px solid var(--ln)
+  display:flex;gap:20px;flex-wrap:wrap;
+  padding-top:20px;border-top:1px solid var(--ln)
 }
 .sv{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--k1);line-height:1}
 .sl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--k3);margin-top:4px}
+
+/* ── Blueprint Geometric Flow SVG (schematic behind headshot) ── */
+.blueprint-schematic{
+  position:absolute;
+  top:-28px;right:-36px;
+  width:200px;height:280px;
+  pointer-events:none;z-index:0;
+  opacity:.28;
+}
 
 /* Image block */
 .img-block{position:relative;width:100%}
 .img-frame{
   aspect-ratio:4/5;background:var(--pa);
-  border:1px solid rgba(18,16,12,0.05);border-radius:var(--r3);
+  border:1px solid rgba(18,16,12,0.08);border-radius:var(--r3);
   overflow:hidden;position:relative;
   width:100%;
 }
@@ -303,11 +379,40 @@ html{scroll-behavior:smooth}
   background:linear-gradient(155deg,#ede8de 0%,#d3ccc0 100%);
   display:flex;align-items:flex-end;position:relative;
 }
+
+/* ── Crosshair corner icons ── */
+.img-crosshair{
+  position:absolute;width:18px;height:18px;pointer-events:none;z-index:5;
+}
+.img-crosshair--tl{ top:8px;left:8px; }
+.img-crosshair--tr{ top:8px;right:8px; }
+.img-crosshair--bl{ bottom:54px;left:8px; }
+.img-crosshair--br{ bottom:54px;right:8px; }
+.img-crosshair svg{ display:block; }
+
+/* ── Scan line animation ── */
+@keyframes scanline{
+  0%  { top:0%; opacity:.7; }
+  45% { opacity:.9; }
+  50% { top:85%; opacity:.7; }
+  50.01%{ top:0%; opacity:0; }
+  52% { opacity:.7; }
+  100%{ top:85%; opacity:.7; }
+}
+.img-scan{
+  position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, transparent 0%, rgba(200,134,10,.6) 20%, rgba(200,134,10,.9) 50%, rgba(200,134,10,.6) 80%, transparent 100%);
+  box-shadow:0 0 8px 2px rgba(200,134,10,.3);
+  pointer-events:none;z-index:4;
+  animation:scanline 3.8s cubic-bezier(.45,0,.55,1) 1.5s infinite;
+  top:0%;
+}
+
 .img-cap-bar{
   position:absolute;bottom:0;left:0;right:0;
   background:rgba(250,248,244,.93);
-  border-top:1px solid rgba(18,16,12,0.05);
-  padding:13px 16px;
+  border-top:1px solid rgba(18,16,12,0.08);
+  padding:13px 16px;z-index:3;
 }
 .img-cap-n{
   font-family:'JetBrains Mono',monospace;font-size:10px;
@@ -317,12 +422,22 @@ html{scroll-behavior:smooth}
   font-family:'JetBrains Mono',monospace;font-size:9px;
   letter-spacing:.12em;text-transform:uppercase;color:var(--am);margin-top:3px;
 }
+
+/* ── Est. 2019 — Styled as Blueprint Revision Date ── */
 .img-est{
-  position:absolute;top:14px;left:14px;background:var(--am);color:#fff;
+  position:absolute;top:14px;left:14px;z-index:5;
+  background:rgba(250,248,244,0.92);
+  border:1px solid rgba(18,16,12,0.12);
+  color:var(--k1);
   font-family:'JetBrains Mono',monospace;font-size:9px;
   letter-spacing:.14em;text-transform:uppercase;
   padding:5px 10px;border-radius:var(--r2);
+  backdrop-filter:blur(6px);
 }
+.img-est::before{
+  content:'REV. ';color:var(--am);font-weight:700;
+}
+
 .img-side{
   position:absolute;top:20px;right:-13px;
   background:var(--k1);color:var(--cr);
@@ -330,11 +445,12 @@ html{scroll-behavior:smooth}
   letter-spacing:.2em;text-transform:uppercase;
   padding:6px 10px;border-radius:var(--r2);
   writing-mode:vertical-rl;transform:rotate(180deg);
+  z-index:3;
 }
 
 /* ── CALCULATOR ────────────────────────────────────────────── */
-#calculator{padding:80px 24px;background:var(--pa);width:100%;position:relative}
-.calc-g{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%}
+#calculator{padding:48px 16px;background:var(--pa);width:100%;position:relative}
+.calc-g{display:grid;grid-template-columns:1fr;gap:20px;width:100%}
 
 /* Glassmorphism card */
 .card{
@@ -373,9 +489,10 @@ html{scroll-behavior:smooth}
 }
 .fi{
   width:100%;background:rgba(250,248,244,0.8);border:1px solid rgba(18,16,12,0.08);
-  border-radius:var(--r2);padding:10px 13px;color:var(--k1);
+  border-radius:var(--r2);padding:12px 13px;color:var(--k1);
   font-family:'JetBrains Mono',monospace;font-size:13px;
   outline:none;transition:border-color .2s;min-width:0;
+  -webkit-appearance:none;appearance:none;
 }
 .fi:focus{border-color:var(--am)}
 .fh{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--k4);margin-top:3px}
@@ -432,7 +549,7 @@ html{scroll-behavior:smooth}
 .ydelta{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.8);margin-top:6px;display:none}
 .ydelta.show{display:block}
 
-/* Glassmorphism Metric cards */
+/* Glassmorphism Metric cards — single column mobile by default */
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .mc{
   background:rgba(255,255,255,0.55);
@@ -456,7 +573,7 @@ html{scroll-behavior:smooth}
 .v-amber{color:var(--am) !important}
 
 /* ── PROCESS — UNIFIED 3-COLUMN KINETIC ────────────────────── */
-#process{padding:80px 24px;background:var(--cr);width:100%;position:relative;overflow:hidden}
+#process{padding:48px 16px;background:var(--cr);width:100%;position:relative;overflow:hidden}
 
 /* Connector line track — sits behind the three cards */
 .proc-connector{
@@ -508,7 +625,7 @@ html{scroll-behavior:smooth}
 
 .proc-g{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:1fr;
   gap:2px;
   background:rgba(18,16,12,0.05);
   border:1px solid rgba(18,16,12,0.05);
@@ -609,33 +726,173 @@ html{scroll-behavior:smooth}
   border-radius:var(--r2);color:var(--k3)
 }
 
-/* ── COMPARISON ────────────────────────────────────────────── */
-#comparison{padding:80px 24px;background:var(--pa);width:100%}
-.comp-wrap{
-  background:rgba(255,255,255,0.65);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(18,16,12,0.05);
-  border-radius:var(--r3);overflow-x:auto;width:100%;
+/* ── COMPARISON — BLUEPRINT GRID REBUILD ──────────────────── */
+#comparison{padding:48px 16px;background:var(--pa);width:100%}
+
+.comp-outer{
+  position:relative;
+  border:1px solid rgba(18,16,12,0.07);
+  border-radius:var(--r3);
+  overflow:hidden;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(18px) saturate(1.3);
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);
+  box-shadow:0 2px 24px rgba(18,16,12,.04), inset 0 1px 0 rgba(255,255,255,.8);
 }
-.comp-tbl{width:100%;border-collapse:collapse;font-size:17px;min-width:480px}
-.comp-tbl th{
-  padding:13px 18px;text-align:left;font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--k3);border-bottom:1px solid rgba(18,16,12,0.05);
+
+/* Thin blueprint-grid watermark behind the cards */
+.comp-outer::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(18,16,12,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,16,12,0.025) 1px, transparent 1px);
+  background-size:28px 28px;
+  pointer-events:none;z-index:0;
 }
-.comp-tbl th.gh{color:var(--am)}
-.comp-tbl td{padding:13px 18px;border-bottom:1px solid rgba(18,16,12,0.04);vertical-align:middle}
-.comp-tbl tr:last-child td{border-bottom:none}
-.comp-tbl tr:hover td{background:rgba(250,248,244,0.5)}
-.td-c{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--k1);font-weight:500}
-.td-b{color:var(--k3)}.td-g{color:var(--k1)}
-.ix{color:var(--rd);margin-right:6px;font-size:10px}
-.ic{color:var(--gn);margin-right:6px;font-size:10px}
+
+/* Column header bar */
+.comp-header{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  border-bottom:1px solid rgba(18,16,12,0.07);
+  position:relative;z-index:1;
+}
+.comp-col-lbl{
+  padding:14px 18px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--k3);
+  border-right:1px solid rgba(18,16,12,0.05);
+  background:rgba(250,248,244,0.6);
+}
+.comp-col-lbl:last-child{border-right:none}
+.comp-col-lbl.lbl-agency{}
+.comp-col-lbl.lbl-dheis{
+  color:var(--am);
+  background:rgba(200,134,10,0.04);
+}
+
+/* Each data row */
+.comp-grid{
+  position:relative;z-index:1;
+}
+.comp-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  border-bottom:1px solid rgba(18,16,12,0.05);
+  transition:background .2s;
+}
+.comp-row:last-child{border-bottom:none}
+.comp-row:hover .comp-cell{background:rgba(250,248,244,0.45)}
+
+.comp-cell{
+  padding:16px 18px;
+  border-right:1px solid rgba(18,16,12,0.04);
+  transition:background .2s;
+  min-width:0;
+}
+.comp-cell:last-child{border-right:none}
+
+/* Category label cell */
+.comp-cell-cat{
+  display:flex;align-items:center;gap:8px;
+}
+.comp-cat-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--k1);font-weight:500;
+  padding:3px 7px;
+  border:1px solid rgba(18,16,12,0.08);
+  border-radius:var(--r2);
+  background:rgba(250,248,244,0.7);
+  white-space:nowrap;
+}
+
+/* Agency cell */
+.comp-cell-agency{
+  display:flex;align-items:flex-start;gap:9px;
+}
+.comp-icon-bad{
+  flex-shrink:0;margin-top:2px;
+  width:16px;height:16px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(174,47,47,0.25);
+  border-radius:2px;
+  background:rgba(174,47,47,0.06);
+}
+.comp-icon-bad svg{display:block}
+.comp-agency-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-style:italic;
+  color:var(--k3);line-height:1.4;
+}
+
+/* Dheis cell — highlighted column */
+.comp-cell-dheis{
+  display:flex;align-items:flex-start;gap:9px;
+  background:rgba(200,134,10,0.03);
+  border-left:2px solid rgba(200,134,10,0.18) !important;
+}
+.comp-row:hover .comp-cell-dheis{background:rgba(200,134,10,0.065)}
+.comp-icon-good{
+  flex-shrink:0;margin-top:2px;
+  width:16px;height:16px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(22,163,74,0.3);
+  border-radius:2px;
+  background:rgba(22,163,74,0.07);
+}
+.comp-icon-good svg{display:block}
+.comp-dheis-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-weight:600;
+  color:var(--k1);line-height:1.4;
+}
+
+/* ── Mobile: stack into single-column blocks ─────────────────── */
+@media(max-width:600px){
+  .comp-header{display:none}
+  .comp-row{
+    grid-template-columns:1fr;
+    gap:0;
+    border-bottom:2px solid rgba(18,16,12,0.07);
+    padding:0;
+  }
+  .comp-cell{
+    border-right:none;
+    border-bottom:1px solid rgba(18,16,12,0.04);
+    padding:12px 16px;
+  }
+  .comp-cell:last-child{border-bottom:none}
+  .comp-cell-cat{padding:10px 16px 8px}
+  .comp-cat-tag{font-size:8px}
+  .comp-cell-dheis{
+    border-left:3px solid rgba(200,134,10,0.28) !important;
+    border-top:none;
+  }
+  /* Mobile column micro-labels */
+  .comp-cell-agency::before{
+    content:'AGENCIES ·';
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:8px;letter-spacing:.15em;
+    color:var(--k4);margin-bottom:4px;
+  }
+  .comp-cell-agency{flex-direction:column;gap:4px}
+  .comp-cell-dheis::before{
+    content:'MOE DHEIS ·';
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:8px;letter-spacing:.15em;
+    color:var(--am);margin-bottom:4px;
+  }
+  .comp-cell-dheis{flex-direction:column;gap:4px}
+}
 
 /* ── TESTIMONIALS ──────────────────────────────────────────── */
-#testimonials{padding:80px 24px;background:var(--cr);width:100%}
-.testi-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;width:100%}
+#testimonials{padding:48px 16px;background:var(--cr);width:100%}
+.testi-g{display:grid;grid-template-columns:1fr;gap:16px;width:100%}
 .tc{
   background:rgba(255,255,255,0.65);
   backdrop-filter:blur(16px) saturate(1.3);
@@ -674,7 +931,7 @@ html{scroll-behavior:smooth}
 .tc-role{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--k3);letter-spacing:.08em;margin-top:2px}
 
 /* ── FAQ — SPRING-LOADED ────────────────────────────────────── */
-#faq{padding:80px 24px;background:var(--pa);width:100%}
+#faq{padding:48px 16px;background:var(--pa);width:100%}
 .faq-max{max-width:720px;width:100%;margin:0 auto}
 .fi-wrap{
   border-bottom:1px solid rgba(18,16,12,0.06);
@@ -747,10 +1004,10 @@ html{scroll-behavior:smooth}
 }
 
 /* ── BOOK ──────────────────────────────────────────────────── */
-#book{padding:80px 24px;background:var(--cr);width:100%}
+#book{padding:48px 16px;background:var(--cr);width:100%}
 .book-inner{
   background:var(--k1);border-radius:var(--r3);
-  padding:56px 40px;text-align:center;
+  padding:36px 20px;text-align:center;
   position:relative;overflow:hidden;width:100%;
 }
 .book-pat{
@@ -759,9 +1016,18 @@ html{scroll-behavior:smooth}
   background-size:24px 24px;pointer-events:none;
 }
 .book-rel{position:relative;z-index:1;width:100%}
-.book-h{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:#fff;line-height:1.04;margin-bottom:12px;font-style:italic}
-.book-sub{font-size:18px;color:rgba(255,255,255,.52);max-width:440px;margin:0 auto 36px;line-height:1.75}
-.cal-shell{overflow:hidden;width:100%;max-width:660px;margin:0 auto}
+.book-h{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.04;margin-bottom:12px;font-style:italic}
+.book-sub{font-size:17px;color:rgba(255,255,255,.52);max-width:440px;margin:0 auto 28px;line-height:1.75}
+/* Calendly container — responsive height with safe area for modals/cookie banners */
+.cal-shell{
+  overflow:hidden;
+  width:100%;
+  max-width:660px;
+  margin:0 auto;
+  border-radius:var(--r2);
+  /* Safe area padding prevents privacy/cookie modals from clipping on mobile */
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
 
 /* ── FOOTER ────────────────────────────────────────────────── */
 footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr);width:100%}
@@ -780,10 +1046,115 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
 .foot-links a:hover{color:var(--am)}
 .foot-icon{width:14px;height:14px;fill:currentColor}
 
-/* ── RESPONSIVE ────────────────────────────────────────────── */
-@media(max-width:860px){
-  .proc-g{grid-template-columns:1fr}
-  /* On mobile, reset directional reveals to simple fade-up */
+/* ── RESPONSIVE — MOBILE-FIRST SCALING UP ─────────────────── */
+
+/* ── 480px and up: small phones to mid-size ─────────────────── */
+@media(min-width:480px){
+  body{font-size:18px}
+  .hero-h1{font-size:clamp(38px,8vw,52px)}
+  .book-h{font-size:40px}
+  .btn-amber,.btn-ghost{width:auto;display:inline-flex}
+  .hero-ctas{flex-direction:row;flex-wrap:wrap}
+  .testi-g{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+}
+
+/* ── 600px and up: larger phones, small tablets ──────────────── */
+@media(min-width:600px){
+  #hero{padding:56px 24px 56px}
+  #calculator,#process,#comparison,#testimonials,#faq,#book{padding-left:24px;padding-right:24px}
+  .wrap{padding:0 24px}
+  .book-inner{padding:44px 32px}
+  .book-h{font-size:44px}
+}
+
+/* ── 720px and up: tablets ───────────────────────────────────── */
+@media(min-width:720px){
+  body{font-size:19px}
+  #hero{padding:64px 24px 60px}
+  .hero-h1{font-size:clamp(48px,7vw,68px)}
+  .sec-h2{font-size:44px}
+  .calc-g{grid-template-columns:1fr 1fr}
+  .testi-g{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .mg{grid-template-columns:1fr 1fr}
+  .book-inner{padding:52px 40px}
+  .book-h{font-size:48px}
+  .ynum{font-size:52px}
+}
+
+/* ── 860px and up: large tablets, small desktops ─────────────── */
+@media(min-width:860px){
+  body{font-size:20px}
+  #hero{padding:72px 24px 64px}
+  .hero-g{
+    grid-template-columns:1fr 320px;
+    gap:0 64px;
+  }
+  .hero-h1{font-size:clamp(52px,7vw,76px)}
+  .sec-h2{font-size:48px}
+  .proc-g{grid-template-columns:repeat(3,1fr)}
+  /* Restore directional step reveals on wide screens */
+  .p-step-01.rv{
+    transform:perspective(1000px) translateX(-48px) rotateY(6deg);
+    clip-path:inset(0 8% 0 0);
+    transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1),clip-path .75s cubic-bezier(.22,1,.36,1);
+    transition-delay:.10s;
+  }
+  .p-step-01.rv.in{
+    transform:perspective(1000px) translateX(0) rotateY(0deg);
+    clip-path:inset(0 0% 0 0);
+  }
+  .p-step-02.rv{
+    transform:perspective(1000px) translateY(52px) rotateX(-6deg);
+    clip-path:inset(10% 0 0 0);
+    transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1),clip-path .75s cubic-bezier(.22,1,.36,1);
+    transition-delay:.28s;
+  }
+  .p-step-02.rv.in{
+    transform:perspective(1000px) translateY(0) rotateX(0deg);
+    clip-path:inset(0% 0 0 0);
+  }
+  .p-step-03.rv{
+    transform:perspective(1000px) translateX(48px) rotateY(-6deg);
+    clip-path:inset(0 0 0 8%);
+    transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1),clip-path .75s cubic-bezier(.22,1,.36,1);
+    transition-delay:.46s;
+  }
+  .p-step-03.rv.in{
+    transform:perspective(1000px) translateX(0) rotateY(0deg);
+    clip-path:inset(0 0 0 0%);
+  }
+  /* Restore connector line on desktop */
+  .proc-connector::before,.proc-connector::after{display:block}
+  /* Restore H1 staircase editorial indentation on wide screens */
+  .hl1{margin-left:clamp(0px,2vw,28px)}
+  .hl3{margin-left:clamp(0px,4vw,48px)}
+  /* Nav links visible, mobile CTA explicitly hidden */
+  .nav-links,.nav-cta{display:flex}
+  .nav-mobile-cta{display:none !important}
+  /* Restore hero corner decorations */
+  .hero-corner--bl,.hero-corner--br,.hero-corner--tr{display:block}
+  .hero-corner--tl{top:18px;left:20px}
+  /* Restore blueprint schematic */
+  .blueprint-schematic{display:block}
+  /* img-side label */
+  .img-side{display:block}
+  .img-frame{max-width:none;margin:0}
+  /* Hero image top offset for editorial asymmetry */
+  .hero-image-col{padding-top:56px}
+}
+
+/* ── Mobile overrides: hide desktop-only nav items below 860px ── */
+@media(max-width:859px){
+  .nav-links,.nav-cta{display:none}
+  .hero-corner--bl,.hero-corner--br,.hero-corner--tr{display:none}
+  .hero-corner--tl{top:10px;left:10px}
+  .blueprint-schematic{display:none}
+  .img-side{display:none}
+  .img-frame{max-width:260px;margin:0 auto}
+  .hero-image-col{padding-top:0}
+  /* On mobile, connector line hidden */
+  .proc-connector::before,.proc-connector::after{display:none}
+  /* Reset directional reveals to simple fade-up on mobile */
   .p-step-01.rv,.p-step-02.rv,.p-step-03.rv{
     transform:translateY(28px);
     clip-path:inset(0 0 14% 0);
@@ -792,34 +1163,7 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
     transform:translateY(0);
     clip-path:inset(0 0 0% 0);
   }
-  /* Hide connector line on mobile */
-  .proc-connector::before,.proc-connector::after{display:none}
-}
-@media(max-width:720px){
-  body{font-size:18px}
-  .sec-h2{font-size:38px}
-  .hero-g{grid-template-columns:1fr;gap:36px}
-  .hero-h1{font-size:42px}
-  .hero-watermark{font-size:90px;top:auto;bottom:-20px;right:-20px;opacity:.03}
-  .hl1,.hl3{margin-left:0}
-  .calc-g{grid-template-columns:1fr}
-  .img-side{display:none}
-  .img-frame{max-width:240px;margin:0 auto}
-  .book-inner{padding:40px 20px}
-  .book-h{font-size:38px}
-  .ynum{font-size:42px}
-  .nav-links,.nav-cta{display:none}
-}
-@media(max-width:480px){
-  body{font-size:17px}
-  .hero-h1{font-size:36px}
-  .sec-h2{font-size:32px}
-  #hero,#calculator,#process,#comparison,#testimonials,#faq,#book{padding-left:16px;padding-right:16px}
-  .wrap{padding-left:16px;padding-right:16px}
-  .hero-ctas{flex-direction:column}
-  .btn-amber,.btn-ghost{width:100%;padding:14px}
-  .book-inner{padding:32px 16px}
-  .testi-g{grid-template-columns:1fr}
+  .hero-watermark{font-size:clamp(72px,22vw,120px);top:auto;bottom:-10px;right:-10px;opacity:.03}
 }
 </style>
 </head>
@@ -834,7 +1178,8 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
       <a onclick="go('process')">Process</a>
       <a onclick="go('faq')">FAQ</a>
     </div>
-    <button class="btn-amber nav-cta" onclick="go('book')" style="padding:10px 20px;font-size:11px">Book a Call →</button>
+    <button class="btn-amber nav-cta" onclick="go('book')" style="padding:10px 20px;font-size:11px;width:auto">Book a Call →</button>
+    <button class="btn-amber nav-mobile-cta" onclick="go('book')">Book →</button>
   </div>
 </nav>
 
@@ -845,6 +1190,20 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
 
   <!-- Background 'ARCHITECT' watermark -->
   <div class="hero-watermark" aria-hidden="true">ARCHITECT.</div>
+
+  <!-- Blueprint corner annotations -->
+  <div class="hero-corner hero-corner--tl" aria-hidden="true">
+    X: 00.000°N<br>Y: 00.000°W<br>[ ORIGIN ]
+  </div>
+  <div class="hero-corner hero-corner--tr" aria-hidden="true">
+    SCALE [ 1:100 ]<br>PROJ. WGS-84<br>SHT. 01 OF 01
+  </div>
+  <div class="hero-corner hero-corner--bl" aria-hidden="true">
+    DWG NO. MD-2019<br>DRAFTED BY: M.DHEIS<br>STATUS: LIVE
+  </div>
+  <div class="hero-corner hero-corner--br" aria-hidden="true">
+    REV. DATE: Q2-2026<br>TOLERANCE: ±0.00%<br>[ APPROVED ]
+  </div>
 
   <div class="hero-g">
 
@@ -881,10 +1240,85 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
     <!-- Image col — offset downward for editorial asymmetry -->
     <div class="hero-image-col hf hf2">
       <div class="img-block">
+
+        <!-- Blueprint geometric flow schematic behind the frame -->
+        <svg class="blueprint-schematic" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Axis lines -->
+          <line x1="20" y1="260" x2="20" y2="10" stroke="rgba(18,16,12,0.35)" stroke-width="0.75" stroke-dasharray="3 3"/>
+          <line x1="20" y1="260" x2="190" y2="260" stroke="rgba(18,16,12,0.35)" stroke-width="0.75" stroke-dasharray="3 3"/>
+          <!-- Arrow heads -->
+          <polygon points="20,6 17,14 23,14" fill="rgba(18,16,12,0.35)"/>
+          <polygon points="194,260 186,257 186,263" fill="rgba(18,16,12,0.35)"/>
+          <!-- Axis labels -->
+          <text x="24" y="8" font-family="monospace" font-size="7" fill="rgba(18,16,12,0.5)">LEADS</text>
+          <text x="170" y="272" font-family="monospace" font-size="7" fill="rgba(18,16,12,0.5)">TIME</text>
+          <!-- Growth curve — geometric flow -->
+          <path d="M20 240 C40 238 55 230 70 210 C90 185 100 158 120 130 C140 100 155 75 190 35"
+                stroke="rgba(200,134,10,0.7)" stroke-width="1.5" fill="none" stroke-dasharray="5 3"/>
+          <!-- Data nodes on the curve -->
+          <circle cx="20"  cy="240" r="3" fill="rgba(200,134,10,0.8)"/>
+          <circle cx="70"  cy="210" r="3" fill="rgba(200,134,10,0.8)"/>
+          <circle cx="120" cy="130" r="3" fill="rgba(200,134,10,0.8)"/>
+          <circle cx="190" cy="35"  r="3" fill="rgba(200,134,10,0.8)"/>
+          <!-- Node labels -->
+          <text x="25"  y="239" font-family="monospace" font-size="6" fill="rgba(18,16,12,0.45)">T0</text>
+          <text x="75"  y="209" font-family="monospace" font-size="6" fill="rgba(18,16,12,0.45)">T1</text>
+          <text x="125" y="129" font-family="monospace" font-size="6" fill="rgba(18,16,12,0.45)">T2</text>
+          <text x="175" y="31"  font-family="monospace" font-size="6" fill="rgba(18,16,12,0.45)">T3</text>
+          <!-- Grid ticks on Y axis -->
+          <line x1="17" y1="200" x2="23" y2="200" stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <line x1="17" y1="150" x2="23" y2="150" stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <line x1="17" y1="100" x2="23" y2="100" stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <line x1="17" y1="50"  x2="23" y2="50"  stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <!-- Grid ticks on X axis -->
+          <line x1="70"  y1="257" x2="70"  y2="263" stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <line x1="120" y1="257" x2="120" y2="263" stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <line x1="170" y1="257" x2="170" y2="263" stroke="rgba(18,16,12,0.25)" stroke-width="0.5"/>
+          <!-- Dashed projection lines from nodes to axes -->
+          <line x1="70"  y1="210" x2="70"  y2="260" stroke="rgba(18,16,12,0.1)" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <line x1="120" y1="130" x2="120" y2="260" stroke="rgba(18,16,12,0.1)" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <line x1="70"  y1="210" x2="20"  y2="210" stroke="rgba(18,16,12,0.1)" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <line x1="120" y1="130" x2="20"  y2="130" stroke="rgba(18,16,12,0.1)" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <!-- Title label -->
+          <text x="30" y="22" font-family="monospace" font-size="6.5" fill="rgba(18,16,12,0.35)" letter-spacing="1">GROWTH VECTOR ANALYSIS</text>
+        </svg>
+
         <div class="img-frame">
           <div class="img-inner">
-            <img src="moe-dheis.jpg" alt="Moe Dheis" style="width:100%;height:100%;object-fit:cover;">
-            <div class="img-est">Est. 2019</div>
+            <img src="moe-dheis.jpg" alt="Moe Dheis" style="width:100%;height:100%;object-fit:cover;position:relative;z-index:1;">
+
+            <!-- Scan line -->
+            <div class="img-scan" aria-hidden="true"></div>
+
+            <!-- Crosshair corners -->
+            <div class="img-crosshair img-crosshair--tl" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <line x1="0" y1="1" x2="7" y2="1" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+                <line x1="1" y1="0" x2="1" y2="7" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="img-crosshair img-crosshair--tr" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <line x1="18" y1="1" x2="11" y2="1" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+                <line x1="17" y1="0" x2="17" y2="7" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="img-crosshair img-crosshair--bl" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <line x1="0" y1="17" x2="7" y2="17" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+                <line x1="1" y1="18" x2="1" y2="11" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="img-crosshair img-crosshair--br" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <line x1="18" y1="17" x2="11" y2="17" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+                <line x1="17" y1="18" x2="17" y2="11" stroke="rgba(200,134,10,0.85)" stroke-width="1"/>
+              </svg>
+            </div>
+
+            <!-- Est. 2019 as blueprint revision date -->
+            <div class="img-est">2019</div>
+
             <div class="img-cap-bar">
               <div class="img-cap-n">MOE DHEIS // Lead Gen Specialist</div>
               <div class="img-cap-r">Exclusive Contractor Leads · Google Ads</div>
@@ -1003,7 +1437,7 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
             <div class="mc-s" id="ms-cnv">Projected monthly</div>
           </div>
         </div>
-        <button class="btn-amber" onclick="go('book')" style="width:100%;padding:15px;font-size:12px">
+        <button class="btn-amber" onclick="go('book')" style="width:100%;padding:14px 12px;font-size:clamp(10px,3.2vw,12px);white-space:normal;line-height:1.3;text-align:center;">
           Get My Exclusive Leads — Book a Call →
         </button>
       </div>
@@ -1073,15 +1507,15 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
       <h2 class="sec-h2">MOE DHEIS <em>vs.</em> Agencies</h2>
       <p style="font-size:18px;margin-top:12px;color:var(--k2);max-width:560px">The difference isn't style. It's structure, speed, and what actually gets measured.</p>
     </div>
-    <div class="comp-wrap rv d1">
-      <table class="comp-tbl">
-        <thead><tr>
-          <th style="width:20%">Category</th>
-          <th>Agencies</th>
-          <th class="gh">MOE DHEIS</th>
-        </tr></thead>
-        <tbody id="ctbody"></tbody>
-      </table>
+    <div class="comp-outer rv d1">
+      <!-- Column header -->
+      <div class="comp-header">
+        <div class="comp-col-lbl">Category</div>
+        <div class="comp-col-lbl lbl-agency">Agencies</div>
+        <div class="comp-col-lbl lbl-dheis">MOE DHEIS</div>
+      </div>
+      <!-- Rows injected by JS -->
+      <div class="comp-grid" id="comp-grid"></div>
     </div>
   </div>
 </section>
@@ -1128,11 +1562,12 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
           <div class="cal-shell">
             <div class="calendly-inline-widget"
                  data-url="https://calendly.com/moe-dheiss/30min"
-                 style="min-width:320px;height:700px;width:100%;"></div>
+                 style="min-width:280px;height:clamp(580px,90vh,700px);width:100%;"></div>
           </div>
           <!-- Calendly inline widget end -->
           <a href="https://calendly.com/moe-dheiss/30min" target="_blank" rel="noopener noreferrer"
-             class="btn-amber" style="margin-top:20px">
+             class="btn-amber"
+             style="margin: 24px auto 0; width:100%; max-width:320px; height:auto; min-height:50px; padding:14px 16px; font-size:clamp(11px, 3.2vw, 13px); white-space:normal; text-align:center; line-height:1.4; display:flex; align-items:center; justify-content:center;">
             Book Directly on Calendly →
           </a>
         </div>
@@ -1307,12 +1742,29 @@ const compRows=[
   {c:"AI / GEO",      a:"Not offered",                     d:"Core to every campaign"},
   {c:"Accountability",a:"Retainer regardless of results",  d:"Performance-aligned model"},
 ];
-document.getElementById('ctbody').innerHTML=compRows.map(r=>
-  `<tr>
-    <td class="td-c">${r.c}</td>
-    <td class="td-b"><span class="ix">✕</span>${r.a}</td>
-    <td class="td-g"><span class="ic">✓</span>${r.d}</td>
-  </tr>`
+document.getElementById('comp-grid').innerHTML=compRows.map(r=>`
+  <div class="comp-row">
+    <div class="comp-cell comp-cell-cat">
+      <span class="comp-cat-tag">${r.c}</span>
+    </div>
+    <div class="comp-cell comp-cell-agency">
+      <span class="comp-icon-bad">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <line x1="1" y1="1" x2="7" y2="7" stroke="rgba(174,47,47,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="7" y1="1" x2="1" y2="7" stroke="rgba(174,47,47,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="comp-agency-txt">${r.a}</span>
+    </div>
+    <div class="comp-cell comp-cell-dheis">
+      <span class="comp-icon-good">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <polyline points="1,4 3,6.5 7,1.5" stroke="rgba(22,163,74,0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </span>
+      <span class="comp-dheis-txt">${r.d}</span>
+    </div>
+  </div>`
 ).join('');
 
 /* ── TESTIMONIALS ────────────────────────── */
