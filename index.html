@@ -1211,7 +1211,7 @@ footer{border-top:1px solid rgba(18,16,12,0.05);padding:24px;background:var(--cr
     <div class="hero-text-col">
       <div class="hero-badge hf hf0">
         <span class="hero-dot"></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--k3)">Accepting New Contractors · Q2 2026</span>
+        <span id="dynamic-status" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--k3)">Accepting New Contractors · Q2 2026</span>
       </div>
 
       <!-- Staircase H1 — each line animates with offset delay -->
@@ -1996,6 +1996,20 @@ function calc(){
 
 /* Run on load */
 calc();
+
+/* ── DYNAMIC HERO STATUS — auto-updates quarter & year ──────── */
+function updateHeroStatus() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth(); // 0-11
+  const quarter = Math.floor(month / 3) + 1;
+
+  const statusEl = document.getElementById('dynamic-status');
+  if (statusEl) {
+    statusEl.textContent = `Accepting New Contractors · Q${quarter} ${year}`;
+  }
+}
+updateHeroStatus();
 
 /* ── SCROLL REVEAL ───────────────────────── */
 const obs=new IntersectionObserver(entries=>{
